@@ -31,6 +31,7 @@ class Manager with ChangeNotifier {
   Future<void> init() async {
     _spreadsheet ??= await _gSheets.spreadsheet(_spreadsheetId);
     _productSheet ??= _spreadsheet.worksheetByTitle('users');
+    await _productSheet.values.insertValue('Name', column: 1, row: 1);
   }
 
   Future<List<ProductModel>> getAll() async {
