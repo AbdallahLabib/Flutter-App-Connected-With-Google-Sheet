@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:gsheets/gsheets.dart';
 import 'package:task/model/product_model.dart';
 
+//To get your credentials please follow that link
+//https://medium.com/@a.marenkov/how-to-get-credentials-for-google-sheets-456b7e88c430
 const _credentials = r'''
 {
   "type": "service_account",
