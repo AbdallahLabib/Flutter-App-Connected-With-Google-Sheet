@@ -21,7 +21,7 @@ const _credentials = r'''
 ''';
 
 // your spreadsheet id
-const _spreadsheetId = '1jpNG8Z9c8EO-JZtMGs2_u5oYQSpBG5XD52lVsY5kW_I';
+const _spreadsheetId = '';
 
 class Manager with ChangeNotifier {
   final GSheets _gSheets = GSheets(_credentials);
