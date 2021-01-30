@@ -21,7 +21,7 @@ const _credentials = r'''
 ''';
 
 // your spreadsheet id
-const _spreadsheetId = '';
+const _spreadsheetId = '1jpNG8Z9c8EO-JZtMGs2_u5oYQSpBG5XD52lVsY5kW_I';
 
 class Manager with ChangeNotifier {
   final GSheets _gSheets = GSheets(_credentials);
@@ -31,13 +31,13 @@ class Manager with ChangeNotifier {
   Future<void> init() async {
     _spreadsheet ??= await _gSheets.spreadsheet(_spreadsheetId);
     _productSheet ??= _spreadsheet.worksheetByTitle('users');
+    await _productSheet.values.insertValue('Name', column: 1, row: 1);
   }
 
   Future<List<ProductModel>> getAll() async {
     await init();
     final products = await _productSheet.values.map.allRows();
     var list = products.map((json) => ProductModel.fromGsheet(json)).toList();
-    print('Length of Row List with values ::::::::::  ${list.length}');
     return list;
   }
 
@@ -57,8 +57,8 @@ class Manager with ChangeNotifier {
       product.toGsheet(),
       fromColumn: 1,
       appendMissing: true,
+      eager: true,
     );
-    //notifyListeners();
   }
 
   Future<bool> deleteById(String name) async {
