@@ -29,7 +29,6 @@ class ProductModel {
     );
   }
 
-  // Method to make GET parameters.
   Map<String, dynamic> toGsheet() => {
         'Name': name,
         'e-mail': email,
